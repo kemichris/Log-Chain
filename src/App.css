@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
+  background-color: #212832;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 3rem;
   align-items: center;
+  box-sizing: border-box;
+}
+
+nav p {
+  margin: 0;
+  font-weight: bold;
+  color: #FC7612;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.5rem;
+}
+
+nav button {
+  background-color: #FC7612;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.main {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+}
+
+.mainContainer {
+  padding: 3rem 4rem;
+  background-color: #212832;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+  margin: 0 1rem;
+}
+
+h1 {
+  margin: 0;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.mainContainer p {
+  color: #FC7612;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.enabledButton {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #FC7612;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.disabledButton {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #cccccc;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: not-allowed;
+}
+
+.buttons {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .buttons button:hover {
+  background-color: white;
+  color: #FC7612;
+  cursor: pointer;
+} */
+
+
+@media (max-width:600px) {
+  nav {
+    padding: 0.8rem 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav p {
+    font-size: 0.8rem;
   }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .mainContainer {
+    padding: 1.5rem 2rem;
+  }
+  
 }
