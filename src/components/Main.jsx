@@ -7,7 +7,7 @@ import { wait } from '@testing-library/user-event/dist/utils';
 
 export const Main = () => {
     const {enqueueSnackbar} = useSnackbar();
-    const contractAddress = "0xe941973Cb5758a11F1662D1e826a98AE9463cb12";
+    const contractAddress = "0xF8CDd77CA1e8E0FceF63efaB67F0EC6F636b1e14";
 
     const [signedIn, setSignedIn] = useState(false);
 
