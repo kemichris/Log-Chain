@@ -6,8 +6,6 @@ contract logBook {
     uint256 private lastResetTime;
     uint256 private constant resetInterval = 20 hours;
 
-    
-
     struct Worker {
         address workerAddress;
         string name;
@@ -21,7 +19,11 @@ contract logBook {
     }
 
     event Signed(uint256 indexed time, address indexed signer);
-    event ProfileUpdated(address indexed workerAddress_, string newName, uint256 newId);
+    event ProfileUpdated(
+        address indexed workerAddress_,
+        string newName,
+        uint256 newId
+    );
 
     mapping(address => Worker) public workers;
 
@@ -35,7 +37,6 @@ contract logBook {
 
     // Signed in workers for the day
     Worker[] public loggedInWorkers;
-
 
     // Add workers to list
     function addWorkers(
@@ -60,17 +61,19 @@ contract logBook {
         workersList.push(newWorker);
     }
 
-    // Remove staffs that no longer works in the company 
+    // Remove staffs that no longer works in the company
     function removeWorkers(address _address) public onlyOwner {
-
         uint256 indexToRemove;
-        
+
         for (uint256 i = 0; i < workersList.length; i++) {
-            require(workersList[i].workerAddress == _address, "Worker does not exists");
+            require(
+                workersList[i].workerAddress == _address,
+                "Worker does not exists"
+            );
 
             if (workersList[i].workerAddress == _address) {
-            indexToRemove = i;
-            break;
+                indexToRemove = i;
+                break;
             }
         }
 
@@ -83,7 +86,6 @@ contract logBook {
         // Remove the worker from the workers mapping
         delete workers[_address];
     }
-
 
     // Get workers data
     function getWorkersData(address _workersAddress)
@@ -109,15 +111,20 @@ contract logBook {
         return ("", 0, false);
     }
 
-
     // Function to update workers profile information
-    function updateProfile(address _address, string memory newName, uint256 newId) public onlyOwner {
+    function updateProfile(
+        address _address,
+        string memory newName,
+        uint256 newId
+    ) public onlyOwner {
         for (uint256 i = 0; i < workersList.length; i++) {
-            require(workersList[i].workerAddress == _address, "Worker does not exists");
+            require(
+                workersList[i].workerAddress == _address,
+                "Worker does not exists"
+            );
             workers[_address].name = newName;
             workers[_address].Id = newId;
         }
-        
 
         // Emit event
         emit ProfileUpdated(msg.sender, newName, newId);
@@ -125,42 +132,54 @@ contract logBook {
 
     // Sign in for the day
     function signIn() public {
+        bool found = false; // Variable to track if the worker is found
+
         for (uint256 i = 0; i < workersList.length; i++) {
-            require(
-                msg.sender == workersList[i].workerAddress,
-                "Not a member of the company"
-            );
+            if (msg.sender == workersList[i].workerAddress) {
+                require(
+                    workersList[i].signed == false,
+                    "User already signed in"
+                );
 
-            require(workersList[i].signed == false, "user already signed in");
+                workersList[i].signed = true;
+                loggedInWorkers.push(workersList[i]);
+                emit Signed(block.timestamp, msg.sender);
 
-           
-            workersList[i].signed = true;
-            loggedInWorkers.push(workersList[i]);
-            emit Signed(block.timestamp, msg.sender);
-       
+                found = true; // Set found to true when the worker is found
+                break; // Exit the loop once a match is found
+            }
         }
+
+        require(found, "Not a member of the company"); // Check if the worker is found
     }
 
-    //Log out for the day 
+    //Log out for the day
     function logOut() public {
+        bool found = false; // Variable to track if the worker is found
+
         for (uint256 i = 0; i < workersList.length; i++) {
-            require(
-                msg.sender == workersList[i].workerAddress,
-                "Not a member of the company"
-            );
+            if (msg.sender == workersList[i].workerAddress) {
+                require(
+                    workersList[i].signed == true,
+                    "Didn't sign in for the day"
+                );
 
-            require(workersList[i].signed == true, "Didn't sign in for the day");
+                emit Signed(block.timestamp, msg.sender);
 
-           
-            workersList[i].signed = false;
-            emit Signed(block.timestamp, msg.sender);
-       
+                found = true; // Set found to true when the worker is found
+                break; // Exit the loop once a match is found
+            }
         }
+
+        require(found, "Not a member of the company"); // Check if the worker is found
     }
 
     // Reset users sign in
-    function resetSignIn() onlyOwner public {
-        require(block.timestamp >= lastResetTime + resetInterval, "Reset interval has not elapsed yet");
+    function resetSignIn() public onlyOwner {
+        require(
+            block.timestamp >= lastResetTime + resetInterval,
+            "Reset interval has not elapsed yet"
+        );
         for (uint256 i = 0; i < workersList.length; i++) {
             workersList[i].signed = false;
         }
