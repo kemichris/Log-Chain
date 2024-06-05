@@ -52,7 +52,7 @@ export const Main = () => {
     return (
         <div className='main'>
             <div className="mainContainer">
-                <h1>NovaWave Workers Logbook</h1>
+                <h1>Log Chain</h1>
                 <p>Each worker is expected to sign in at the time of arrival and endeavor to sign out when leaving </p>
 
                 <div className="buttons">
