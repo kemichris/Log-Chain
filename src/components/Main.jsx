@@ -11,6 +11,8 @@ export const Main = () => {
 
     const [signedIn, setSignedIn] = useState(false);
 
+    const [signInTime, setSignInTime] = useState(0)
+
     const signIn = async ()=> {
         try {
             const provider = new ethers.BrowserProvider(window.ethereum);
@@ -24,6 +26,10 @@ export const Main = () => {
             setSignedIn(!signedIn);
             console.log(receipt);
             enqueueSnackbar("Sign in successful", {variant: "success"});
+
+            const currentTime = new Date().toLocaleTimeString();
+            setSignInTime(currentTime);
+
         } catch(error) {
             enqueueSnackbar(error, {variant: "error"});
             console.log("Failed, reason", error);
@@ -43,6 +49,9 @@ export const Main = () => {
             setSignedIn(signedIn);
             console.log(receipt);
             enqueueSnackbar("Log out successful", {variant: "success"});
+
+            const currentTime = new Date().toLocaleTimeString();
+            setSignInTime(currentTime);
         } catch(error) {
             enqueueSnackbar(error, {variant: "error"});
             console.log("Failed, reason", error);
@@ -56,7 +65,7 @@ export const Main = () => {
                 <p>Each worker is expected to sign in at the time of arrival and endeavor to sign out when leaving </p>
 
                 <div className="buttons">
-                    <button onClick={ signedIn ? null : signIn} disabled={signedIn} 
+                    <button onClick={ signedIn ? null : signIn}  
                         className={signedIn ? "disabledButton": "enabledButton"}
                     >Sign in</button>
 
@@ -64,6 +73,11 @@ export const Main = () => {
                 </div>
 
             </div>
+
+            <div className="signInTime">
+                <p>Time signed in: {signInTime}</p>
+            </div>
+
         </div>
     )
 }

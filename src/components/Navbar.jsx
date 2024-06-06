@@ -43,7 +43,7 @@ export const Navbar = () => {
     return (
         <div>
             <nav>
-                <p>NovaWave Industries</p>
+                <p>Log Chain</p>
                 <button onClick={ConnectWallet}>{connected? address: "Connect wallet"}</button>
             </nav>
         </div>

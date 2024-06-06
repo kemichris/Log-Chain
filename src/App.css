@@ -82,6 +82,22 @@ h1 {
   cursor: pointer;
 } */
 
+.signInTime {
+  padding: 0.5rem 1rem;
+  background-color: #FC7612;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.signInTime p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #212832;
+
+}
+
 
 @media (max-width:600px) {
   nav {
