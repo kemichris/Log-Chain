@@ -8,9 +8,11 @@ This project harnesses blockchain technology to develop a transparent and secure
 With the increasing unreliability of web2 data, this project will help company  utilize blockchain technology to create a secure and transparent logbook that tracks user sign-ins. This innovative approach ensures the authenticity and integrity of user data, providing a tamper-proof record that fosters trust and accountability. By leveraging blockchain's decentralized and immutable nature, we can guarantee that user activity is accurately recorded and accessible, without any risk of compromise or manipulation.
 
 ## Quick Start
-To launch the app, click here 👉👉 https://log-book-ten.vercel.app/
+- The contract was run on the polygon Cardona testnet, so make sure you have some testnet tokens, if you don't; click here { https://faucet.polygon.technology/ } to get some.
+- Then select Polygon zkEVM (cardona) for network
+- input your wallet address, then submit, you will receive the tokens.
+- To launch the app, click here 👉👉 https://log-book-ten.vercel.app/
 
-The contract was run on the polygon Cardona testnet
 
 ### What can this app do
 
