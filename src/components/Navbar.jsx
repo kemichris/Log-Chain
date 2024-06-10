@@ -8,7 +8,7 @@ export const Navbar = (props) => {
     const [connected, setConnected] = useState(false);
     const [address, setAddress] = useState("");
 
-    const {link} = props;
+    const {link, linkPage} = props;
 
 
     //Connect wallet 
@@ -46,7 +46,7 @@ export const Navbar = (props) => {
         <div>
             <nav>
                 <p>Log Chain</p>
-                <NavLink className="admin" to="/Admin" >{link}</NavLink>
+                <NavLink className="admin" to={linkPage} >{link}</NavLink>
                 
                 <button onClick={ConnectWallet}>{connected? address: "Connect wallet"}</button>
             </nav>
