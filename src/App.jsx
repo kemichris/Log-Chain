@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <SnackbarProvider>
-        <Navbar/>
+        <Navbar link= "Sign in as Admin"/>
         <Main/>
       </SnackbarProvider>
     </div>

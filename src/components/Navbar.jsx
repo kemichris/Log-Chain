@@ -1,12 +1,14 @@
 import { ethers } from 'ethers'
 import React, {useState} from 'react'
-
+import { NavLink } from 'react-router-dom';
 import {useSnackbar } from 'notistack';
 
-export const Navbar = () => {
+export const Navbar = (props) => {
     const { enqueueSnackbar } = useSnackbar();
     const [connected, setConnected] = useState(false);
     const [address, setAddress] = useState("");
+
+    const {link} = props;
 
 
     //Connect wallet 
@@ -44,6 +46,8 @@ export const Navbar = () => {
         <div>
             <nav>
                 <p>Log Chain</p>
+                <NavLink className="admin" to="/Admin" >{link}</NavLink>
+                
                 <button onClick={ConnectWallet}>{connected? address: "Connect wallet"}</button>
             </nav>
         </div>
