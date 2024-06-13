@@ -1,5 +1,5 @@
 /* workers section  */
-.workersSection, .workerSetting {
+.workersSection, .workerSetting, .workersProfile {
     display: flex;
     align-items: flex-start;
     width: 100%;
@@ -14,7 +14,7 @@ h2 {
     color: #cccccc;
 }
 
-.workersList, .signedInWorkers, .addWorkers, .removeWorkers {
+.workersList, .signedInWorkers, .addWorkers, .removeWorkers, .profileUpdate, .getWorkersData {
     width: 50%;
 }
 
@@ -78,6 +78,41 @@ table tr td {
     cursor: pointer;
 }
 
-.addBtn {
+.addBtn, .btn {
     color: white;
+}
+
+.workersProfile {
+    margin-bottom: 4rem;
+}
+
+.getWorkersData p {
+    color: #cccccc;
+}
+
+.reset {
+    padding: 0.7rem 1.5rem;
+    background-color: #FC7612;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* //////////// MEDIA RESPOSIVENESS */
+
+@media (max-width:1000px) {
+
+    .workersSection, .workerSetting, .workersProfile {
+        flex-direction: column;
+        padding: 3rem 1rem;
+    }
+
+    .workersList, .signedInWorkers, .addWorkers, .removeWorkers, .profileUpdate, .getWorkersData {
+        width: 100%;
+        max-width: 100%;
+    }
 }

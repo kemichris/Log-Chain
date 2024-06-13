@@ -29,7 +29,7 @@ export const Admin = () => {
             
             
 
-           <button>Reset Sign in</button>
+           <button className='reset'>Reset Sign in</button>
             
         </div>
     )
