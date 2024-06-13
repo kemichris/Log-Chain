@@ -1,0 +1,43 @@
+/* workers section  */
+.workersSection, .workerSetting {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    padding: 3rem 4rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    gap: 2rem;
+}
+
+h2 {
+    color: #cccccc;
+}
+
+.workersList, .signedInWorkers, .addWorkers, .removeWorkers {
+    width: 50%;
+}
+
+table {
+    width: 100%;
+    color: white;
+    padding: 0.5rem;
+    border: 1px solid white;
+}
+
+table th {
+    text-align: start;
+    font-size: 1.2rem;
+    border: 1px solid white;
+    padding: 0.5rem;
+}
+
+table tr td {
+    border: 1px solid white;
+    padding: 0.5rem;
+}
+
+/* Workers Setting  */
+.addWorkers form, .removeWorkers form {
+    width: 100%;
+}

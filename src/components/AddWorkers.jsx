@@ -3,6 +3,7 @@ import React from 'react'
 export const AddWorkers = () => {
     return (
         <div className='addWorkers'>
+            <h2>Add Workers</h2>
             <div className="addWorkers">
                 <form action="">
                     <label htmlFor="address">Address</label>
@@ -12,6 +13,7 @@ export const AddWorkers = () => {
                     <label htmlFor="id">Address</label>
                     <input type="text" name="id" id="id" required />
 
+                    <button>Add</button>
                 </form>
             </div>
         </div>

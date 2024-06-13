@@ -1,4 +1,7 @@
 import React from 'react'
+
+import "./styles/Admin.css"
+
 import { Navbar } from './components/Navbar'
 import { WorkersList } from './components/WorkersList'
 import { SignedInWorkers } from './components/SignedInWorkers'

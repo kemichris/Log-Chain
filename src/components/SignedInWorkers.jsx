@@ -3,6 +3,7 @@ import React from 'react'
 export const SignedInWorkers = () => {
   return (
     <div className='signedInWorkers'>
+        <h2>Signed in workers</h2>
         <table>
             <thead>
                 <tr>

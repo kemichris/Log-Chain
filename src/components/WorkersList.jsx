@@ -3,6 +3,7 @@ import React from 'react'
 export const WorkersList = () => {
   return (
     <div className='workersList'>
+        <h2>Workers List</h2>
         <table>
             <thead>
                 <tr>
