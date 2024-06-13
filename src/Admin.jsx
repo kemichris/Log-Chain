@@ -10,27 +10,33 @@ import { RemoveWorkers } from './components/RemoveWorkers'
 import { ProfileUpdate } from './components/ProfileUpdate'
 import { GetWorkersData } from './components/GetWorkersData'
 
+import { SnackbarProvider } from 'notistack';
+
 export const Admin = () => {
     return (
         <div>
-            <Navbar linkPage="/" link="Sign in as worker" />
-            <div className="workersSection">
-                <WorkersList />
-                <SignedInWorkers />
-            </div>
-            <div className="workerSetting">
-                <AddWorkers />
-                <RemoveWorkers />
-            </div>
-            <div className="workersProfile">
-               <ProfileUpdate />
-               <GetWorkersData/>
-            </div>
-            
-            
 
-           <button className='reset'>Reset Sign in</button>
-            
+            <SnackbarProvider>
+                <Navbar linkPage="/" link="Sign in as worker" />
+                <div className="workersSection">
+                    <WorkersList />
+                    <SignedInWorkers />
+                </div>
+                <div className="workerSetting">
+                    <AddWorkers />
+                    <RemoveWorkers />
+                </div>
+                <div className="workersProfile">
+                    <ProfileUpdate />
+                    <GetWorkersData />
+                </div>
+            </SnackbarProvider>
+
+
+
+
+            <button className='reset'>Reset Sign in</button>
+
         </div>
     )
 }
