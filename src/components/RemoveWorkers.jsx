@@ -1,14 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
+
+import contractAbi from "../contract/contractABI.json"
+import { useSnackbar } from 'notistack';
+import { ethers } from 'ethers';
 
 export const RemoveWorkers = () => {
+
+    const { enqueueSnackbar } = useSnackbar();
+    const contractAddress = "0xF8CDd77CA1e8E0FceF63efaB67F0EC6F636b1e14";
+
+    const [workerAddress, setWorkerAddress] = useState("");
+
+    const removeWorkers = async (event) => {
+        event.preventDefault();
+        try {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = await provider.getSigner();
+            const logBookContract = new ethers.Contract(contractAddress, contractAbi, signer);
+
+            const transaction = await logBookContract.removeWorkers(workerAddress);
+            let receipt;
+            receipt = await transaction.wait();
+            console.log(receipt);
+
+            setWorkerAddress("");
+
+            console.log(`${workerAddress} removed successfully`);
+            enqueueSnackbar("Worker profile Deleted", { variant: "success" });
+        } catch (error) {
+            console.log("Error deleting profile:", error);
+            enqueueSnackbar("Error deleting profile:," + error, { variant: "error" });
+        }
+    }
+
+    const handleworkerAddress = (event) => {
+        setWorkerAddress(event.target.value);
+    }
+
     return (
         <div className="removeWorkers">
             <h2>Remove Workers</h2>
-            <form className="form" action="">
+            <form className="form" onSubmit={removeWorkers}>
                 <label htmlFor="address">Address</label>
-                <input type="text" name="address" id="address" required />
+                <input type="text" name="address" value={workerAddress} onChange={handleworkerAddress} required />
 
-                <button>Remove</button>
+                <button type="submit">Remove</button>
             </form>
         </div>
     );
