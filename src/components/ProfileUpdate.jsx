@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import contractAbi from "../contract/contractABI.json"
 import { useSnackbar } from 'notistack';
 import { ethers } from 'ethers';
-import { wait } from '@testing-library/user-event/dist/utils';
+
 
 export const ProfileUpdate = () => {
     const {enqueueSnackbar} = useSnackbar();
@@ -24,7 +24,7 @@ export const ProfileUpdate = () => {
             const transaction = await logBookContract.updateProfile(workerAddress, newName, newId);
             let receipt;
             receipt = await transaction.wait()
-            console.log(wait);
+            console.log(receipt);
 
             setWorkerAddress("")
 
@@ -36,15 +36,26 @@ export const ProfileUpdate = () => {
         }
     }
 
+    const handleAddress = (event)=> {
+        setWorkerAddress(event.target.value)
+    }
+
+    const handleNewName = (event)=> {
+        setnNewName(event.target.value)
+    }
+    const handleNewId = (event)=> {
+        setNewId(event.target.value)
+    }
+
 
     return (
         <div className='profileUpdate'>
             <h2>Profile Update</h2>
             <form className='form' onSubmit={updateProfile}>
 
-                <input type="text" name="address" placeholder='Workers Address' value={workerAddress} required />
-                <input type="text" name="name" placeholder='New Name' id="name" required />
-                <input type="text" name="id" placeholder='New ID' id="id" required />
+                <input type="text" name="address" placeholder='Workers Address' value={workerAddress} onChange={handleAddress} required />
+                <input type="text" name="name" placeholder='New Name' value={newName} onChange={handleNewName} required />
+                <input type="text" name="id" placeholder='New ID' value={newId} onChange={handleNewId} required />
 
                 <button className='btn'> submint</button>
             </form>
