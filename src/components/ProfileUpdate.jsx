@@ -11,7 +11,6 @@ export const ProfileUpdate = () => {
 
     const [workerAddress, setWorkerAddress] = useState("");
     const [newName, setnNewName] = useState("");
-    const [newId, setNewId] = useState("");
 
     const updateProfile = async (event)=> {
         event.preventDefault()
@@ -21,12 +20,13 @@ export const ProfileUpdate = () => {
             const signer = await provider.getSigner();
             const logBookContract = new ethers.Contract(contractAddress, contractAbi, signer);
 
-            const transaction = await logBookContract.updateProfile(workerAddress, newName, newId);
+            const transaction = await logBookContract.updateProfile(workerAddress, newName);
             let receipt;
             receipt = await transaction.wait()
             console.log(receipt);
 
-            setWorkerAddress("")
+            setWorkerAddress("");
+            setnNewName("");
 
             console.log(`profile updated successfully`);
             enqueueSnackbar("Worker profile updated", { variant: "success" });
@@ -43,11 +43,6 @@ export const ProfileUpdate = () => {
     const handleNewName = (event)=> {
         setnNewName(event.target.value)
     }
-    const handleNewId = (event)=> {
-        setNewId(event.target.value)
-    }
-
-
     return (
         <div className='profileUpdate'>
             <h2>Profile Update</h2>
@@ -55,7 +50,7 @@ export const ProfileUpdate = () => {
 
                 <input type="text" name="address" placeholder='Workers Address' value={workerAddress} onChange={handleAddress} required />
                 <input type="text" name="name" placeholder='New Name' value={newName} onChange={handleNewName} required />
-                <input type="text" name="id" placeholder='New ID' value={newId} onChange={handleNewId} required />
+                
 
                 <button className='btn'> submint</button>
             </form>
