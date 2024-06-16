@@ -9,7 +9,7 @@ export const GetWorkersData = () => {
 
   const [workerAddress, setWorkerAddress] = useState("");
   const [workerName, setWorkerName] = useState("");
-  const [workerId, setWorkerId] = useState(0)
+  const [workerId, setWorkerId] = useState()
   const [signedIn, setSignedIn] = useState();
 
   const getWorkerData = async (event) => {
@@ -26,18 +26,37 @@ export const GetWorkersData = () => {
       receipt = await transaction;
       console.log(receipt);
 
-      const [name, id, signed] = receipt;
+      const name = receipt[0] !== undefined ? receipt[0] : "";
+      const id = receipt[1] !== undefined ? receipt[1].toString() : "";
+      const signed = receipt[2] !== undefined ? receipt[2] : false;
+
+      // const [name, id, signed] = receipt;
       
-      setWorkerName(name);
-      setWorkerId(id);
-      setSignedIn(signed);
+      // setWorkerName(name);
+      // setWorkerId(id);
+      // setSignedIn(signed);
 
       console.log(`Worker details: ${name}, ${id}, ${signed}`);
 
+      let alert = "Worker details displayed"
+
+      if (receipt[0] !== "") {
+        alert = "Worker details displayed"
+        setWorkerName(name);
+        setWorkerId(id);
+        setSignedIn(signed);
+      } else {
+        alert = "User does not exist"
+        setWorkerName("");
+        setWorkerId("");
+        setSignedIn("");
+      }
+
       setWorkerAddress("");
 
-      console.log(`Worker details displayed`);
-      enqueueSnackbar("Worker details displayed", { variant: "success" });
+     
+    enqueueSnackbar(alert, { variant: "success" });
+     
     } catch (error) {
       console.log("Error getting workers data:", error);
       enqueueSnackbar("Error getting workers data:," + error, { variant: "error" });
@@ -49,16 +68,16 @@ export const GetWorkersData = () => {
   }
 
   return (
-    <div className='getWorkersData'>
+    <div className='getWorkersData' onSubmit={getWorkerData}>
       <h2>Get Workers Data</h2>
       <form className='form' action="">
-        <input type="search" placeholder='workers address' value={workerAddress} onChange={handleAddress} />
+        <input type="search" placeholder='workers address' required value={workerAddress} onChange={handleAddress} />
 
         <p>Name: {workerName} </p>
         <p>ID: {workerId} </p>
         <p>Signed In: {signedIn? "Yes": "No"}</p>
 
-        <button onClick={getWorkerData} className='btn'>Search</button>
+        <button type='submit' className='btn'>Search</button>
       </form>
     </div>
   )
