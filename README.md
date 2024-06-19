@@ -16,9 +16,9 @@ With the increasing unreliability of web2 data, this project will help company  
 
 ### What can this app do
 
-. Admin can add new workers
-. Admin can remove workers whose employment is terminated
-. Workers can sign in
-. Workers can sign out
-. Admin can check users data with wallet Address
-. List of signed in workers
+- Admin can add new workers
+- Admin can remove workers whose employment is terminated
+- Workers can sign in
+- Workers can sign out
+- Admin can check users data with wallet Address
+- List of signed in workers
