@@ -7,7 +7,7 @@ import { ethers } from 'ethers';
 
 export const ProfileUpdate = () => {
     const {enqueueSnackbar} = useSnackbar();
-    const contractAddress = "0x68B3893355F6592b2C430d8bccAc495071639d43";
+    const contractAddress = "0x7b0629C461331ed5156fB64dD88f72cc70A355C8";
 
     const [workerAddress, setWorkerAddress] = useState("");
     const [newName, setnNewName] = useState("");
