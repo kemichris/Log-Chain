@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import contractAbi from "../contract/contractABI.json";
 
 import { ethers } from "ethers";
+import { enqueueSnackbar } from "notistack";
 
 export const WorkersList = () => {
     const contractAddress = "0x68B3893355F6592b2C430d8bccAc495071639d43";
@@ -10,6 +11,11 @@ export const WorkersList = () => {
     
     const truncateAddress = (address)=> {
         return `${address.slice(0, 4)}....${address.slice(-4)}`
+    }
+
+    const copyAddress = (address)=>{
+        navigator.clipboard.writeText(address)
+        enqueueSnackbar("Address copied", {variant: "success"});
     }
 
     const fetchWorkers = async () => {
@@ -52,7 +58,7 @@ export const WorkersList = () => {
                 <tbody>
                     {workers.map((worker, index) => (
                         <tr key={index}>
-                            <td>{truncateAddress(worker.workerAddress)}</td>
+                            <td className="tableAddress" onClick={()=>copyAddress(worker.workerAddress)}>{truncateAddress(worker.workerAddress)}</td>
                             <td>{worker.name}</td>
                             <td>{(worker.Id).toString()}</td>
                             <td>{worker.signed? "Yes": "No"}</td>

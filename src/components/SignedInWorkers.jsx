@@ -11,6 +11,10 @@ export const SignedInWorkers = () => {
         return `${address.slice(0, 4)}....${address.slice(-4)}`
     }
 
+    const copyAddress = (address)=>{
+        navigator.clipboard.writeText(address)
+        enqueueSnackbar("Address copied", {variant: "success"});
+    }
 
     const fetchSignedWorkers = async () => {
         try {
@@ -53,7 +57,7 @@ export const SignedInWorkers = () => {
                 <tbody>
                     {workers.map((worker, index) => (
                         <tr key={index}>
-                            <td>{truncateAddress(worker.workerAddress)}</td>
+                            <td className="tableAddress" onClick={()=>copyAddress(worker.workerAddress)}>{truncateAddress(worker.workerAddress)}</td>
                             <td>{worker.name}</td>
                             <td>{(worker.Id).toString()}</td>
                             {/* <td>{}</td> */}
