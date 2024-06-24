@@ -7,6 +7,10 @@ export const SignedInWorkers = () => {
     const contractAddress = "0x68B3893355F6592b2C430d8bccAc495071639d43";
     const [workers, setWorkers] = useState([]);
 
+    const truncateAddress = (address)=> {
+        return `${address.slice(0, 4)}....${address.slice(-4)}`
+    }
+
 
     const fetchSignedWorkers = async () => {
         try {
@@ -49,7 +53,7 @@ export const SignedInWorkers = () => {
                 <tbody>
                     {workers.map((worker, index) => (
                         <tr key={index}>
-                            <td>{worker.workerAddress}</td>
+                            <td>{truncateAddress(worker.workerAddress)}</td>
                             <td>{worker.name}</td>
                             <td>{(worker.Id).toString()}</td>
                             {/* <td>{}</td> */}
