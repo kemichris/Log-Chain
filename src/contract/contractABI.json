@@ -30,6 +30,19 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "removeWorkers",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
@@ -48,29 +61,10 @@
 				"internalType": "string",
 				"name": "newName",
 				"type": "string"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newId",
-				"type": "uint256"
 			}
 		],
 		"name": "ProfileUpdated",
 		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_address",
-				"type": "address"
-			}
-		],
-		"name": "removeWorkers",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	},
 	{
 		"inputs": [],
@@ -116,16 +110,46 @@
 				"internalType": "string",
 				"name": "newName",
 				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "newId",
-				"type": "uint256"
 			}
 		],
 		"name": "updateProfile",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getSignedInWorkers",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "workerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "signed",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct logChain.Worker[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -152,6 +176,41 @@
 				"internalType": "bool",
 				"name": "",
 				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getWorkersList",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "workerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "signed",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct logChain.Worker[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",
