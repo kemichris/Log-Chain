@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import contractAbi from "../contract/contractABI.json";
 
 import { ethers } from "ethers";
 
 export const WorkersList = () => {
-    const contractAddress = "0x3541AAC732025c6df90faCd5aA9fe7EC397f23Ab";
+    const contractAddress = "0x68B3893355F6592b2C430d8bccAc495071639d43";
 
     const [workers, setWorkers] = useState([]);
+    
 
     const fetchWorkers = async () => {
         try {
@@ -20,28 +21,17 @@ export const WorkersList = () => {
             );
 
             const transaction = await logBookContract.getWorkersList();
-
             let receipt;
-            receipt = await transaction;
-            console.log(receipt);
-
-            // const name = receipt[0] !== undefined ? receipt[0] : "";
-            // const id = receipt[1] !== undefined ? receipt[1].toString() : "";
-            // const signed = receipt[2] !== undefined ? receipt[2] : false;
-
-            // const [name, id, signed] = receipt;
-
-            // setWorkerName(name);
-            // setWorkerId(id);
-            // setSignedIn(signed);
-
-            // console.log(`Worker details: ${name}, ${id}, ${signed}`);
-
+            receipt = await transaction;       
             setWorkers(receipt);
         } catch (error) {
             console.log("Error getting workers data:", error);
         }
     };
+
+    useEffect(()=>{
+        fetchWorkers()
+    })
 
     return (
         <div className="workersList">
@@ -61,13 +51,11 @@ export const WorkersList = () => {
                         <tr key={index}>
                             <td>{worker.workerAddress}</td>
                             <td>{worker.name}</td>
-                            <td>{worker.id}</td>
+                            <td>{(worker.Id).toString()}</td>
                             <td>{worker.signedIn? "Yes": "No"}</td>
                         </tr>
                     ))}
                 </tbody>
-
-                <button onClick={fetchWorkers}></button>
             </table>
         </div>
     );

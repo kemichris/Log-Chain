@@ -7,7 +7,7 @@ import { ethers } from 'ethers';
 
 export const AddWorkers = () => {
     const {enqueueSnackbar} = useSnackbar();
-    const contractAddress = "0x3541AAC732025c6df90faCd5aA9fe7EC397f23Ab";
+    const contractAddress = "0x68B3893355F6592b2C430d8bccAc495071639d43";
 
     const [workerAddress, setWorkerAddress] = useState("");
     const [workerName, setWorkerName] = useState("")
@@ -65,7 +65,7 @@ export const AddWorkers = () => {
                 <input type="text" value={workerAddress} onChange={handleworkerAddress} name="address"  required />
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" value={workerName} onChange={handleWorkerName} required />
-                <label htmlFor="id">Address</label>
+                <label htmlFor="id">ID</label>
                 <input type="text" name="id" value={workerId} onChange={handleWorkerId} required />
 
                 <button type='submit' className='addBtn'>Add</button>
