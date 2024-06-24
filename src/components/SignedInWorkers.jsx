@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import contractAbi from "../contract/contractABI.json";
+import { enqueueSnackbar } from "notistack";
 
 import { ethers } from "ethers";
 
