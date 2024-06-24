@@ -7,7 +7,7 @@ import { ethers } from 'ethers';
 
 export const AddWorkers = () => {
     const {enqueueSnackbar} = useSnackbar();
-    const contractAddress = "0xF8CDd77CA1e8E0FceF63efaB67F0EC6F636b1e14";
+    const contractAddress = "0x3541AAC732025c6df90faCd5aA9fe7EC397f23Ab";
 
     const [workerAddress, setWorkerAddress] = useState("");
     const [workerName, setWorkerName] = useState("")
