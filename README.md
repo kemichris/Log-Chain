@@ -25,7 +25,7 @@ With the increasing unreliability of web2 data, this project will help company  
 - To launch the app, click here 👉👉 https://log-book-ten.vercel.app/
 
 ## Usage
-- To be able to test the admin function users need the autorised account, below is the private key 🔑 (please do not send money to this account as public also have acccess to the account)
+- To be able to test the admin function users need the autorised account, below is the private key 🔑 (please do not send money to this account as public also have access to the account)
 - ( 145e823b3b080401d262d80b2541d648d3a75a70892c45a9c3bb0c5ba9f45133 ) Account private key
 - With this you will be able to test the admin functions
 
