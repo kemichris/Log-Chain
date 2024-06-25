@@ -1,5 +1,7 @@
 # Log Chain
 
+<img width="1439" alt="Screenshot 2024-06-25 at 20 41 31" src="https://github.com/kemichris/Log-Chain/assets/106411775/5de3534c-5a49-4706-8511-2040ea0023e1">
+
 This project harnesses blockchain technology to develop a transparent and secure user sign-in tracking system for companies. By leveraging the immutable and decentralized nature of blockchain, our solution provides a tamper-proof record of user activity, ensuring accountability and trust.
 
 
