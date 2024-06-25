@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract logBook {
+contract logChain {
     address private owner;
     uint256 private lastResetTime;
     uint256 private constant resetInterval = 20 hours;
@@ -19,16 +19,12 @@ contract logBook {
     }
 
     event Signed(uint256 indexed time, address indexed signer);
-    event ProfileUpdated(
-        address indexed workerAddress_,
-        string newName,
-        uint256 newId
-    );
+    event ProfileUpdated(address indexed workerAddress_, string newName);
 
     mapping(address => Worker) public workers;
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only the Boss can call this function");
+        require(msg.sender == owner, "Authorised personel only");
         _;
     }
 
@@ -38,12 +34,21 @@ contract logBook {
     // Signed in workers for the day
     Worker[] public loggedInWorkers;
 
+    //Get workers list
+    function getWorkersList() public view returns(Worker[]memory) {
+        return workersList;
+    }
+
+    function getSignedInWorkers() public view returns(Worker[]memory) {
+        return loggedInWorkers;
+    }
+
     // Add workers to list
     function addWorkers(
         address _address,
         string memory _name,
         uint256 _id
-    ) public onlyOwner {
+        ) public onlyOwner {
         for (uint256 i = 0; i < workersList.length; i++) {
             require(
                 workersList[i].Id != _id,
@@ -64,24 +69,31 @@ contract logBook {
     // Remove staffs that no longer works in the company
     function removeWorkers(address _address) public onlyOwner {
         uint256 indexToRemove;
+        bool found = false;
 
         for (uint256 i = 0; i < workersList.length; i++) {
-            require(
-                workersList[i].workerAddress == _address,
-                "Worker does not exists"
-            );
-
             if (workersList[i].workerAddress == _address) {
                 indexToRemove = i;
-                break;
-            }
+                found = true;
+                break ;
+            }   
         }
+        require(found, "Worker does not exists");
 
         // Remove the worker from the workersList array
         for (uint256 i = indexToRemove; i < workersList.length - 1; i++) {
             workersList[i] = workersList[i + 1];
         }
         workersList.pop();
+
+        // Remove the worker from the loggedInWorkers array
+        for (uint256 i = 0; i < loggedInWorkers.length; i++) {
+            if (loggedInWorkers[i].workerAddress == _address) {
+                loggedInWorkers[i] = loggedInWorkers[loggedInWorkers.length - 1];
+                loggedInWorkers.pop();
+                break;
+            }       
+        }
 
         // Remove the worker from the workers mapping
         delete workers[_address];
@@ -97,7 +109,7 @@ contract logBook {
             uint256,
             bool
         )
-    {
+        {
         for (uint256 i = 0; i < workersList.length; i++) {
             if (_workersAddress == workersList[i].workerAddress) {
                 return (
@@ -114,20 +126,28 @@ contract logBook {
     // Function to update workers profile information
     function updateProfile(
         address _address,
-        string memory newName,
-        uint256 newId
-    ) public onlyOwner {
+        string memory newName
+        ) public onlyOwner {
+        bool workerFound = false;
         for (uint256 i = 0; i < workersList.length; i++) {
-            require(
-                workersList[i].workerAddress == _address,
-                "Worker does not exists"
-            );
-            workers[_address].name = newName;
-            workers[_address].Id = newId;
+            if (workersList[i].workerAddress == _address) {
+                workerFound = true;
+                workers[_address].name = newName;
+                workersList[i].name = newName;
+                break;
+            }
+            
         }
+        for (uint256 i = 0; i < loggedInWorkers.length; i++) {
+            if (loggedInWorkers[i].workerAddress == _address) {
+                loggedInWorkers[i].name = newName;
+                break;
+            }        
+        }
+        require(workerFound,"Worker does not exists");
 
         // Emit event
-        emit ProfileUpdated(msg.sender, newName, newId);
+        emit ProfileUpdated(msg.sender, newName);
     }
 
     // Sign in for the day
