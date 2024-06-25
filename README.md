@@ -19,7 +19,7 @@ With the increasing unreliability of web2 data, this project will help company  
 - List of workers displayed
 
 ## Quick Start
-- The contract was run on the polygon Cardona testnet, so make sure you have some testnet tokens, if you don't; click here { https://faucet.polygon.technology/ } to get some.
+- The contract was deployed on the polygon Cardona testnet, so make sure you have some testnet tokens, if you don't; click here { https://faucet.polygon.technology/ } to get some.
 - Then select Polygon zkEVM (cardona) for network
 - input your wallet address, then submit, you will receive the tokens.
 - To launch the app, click here 👉👉 https://log-book-ten.vercel.app/
