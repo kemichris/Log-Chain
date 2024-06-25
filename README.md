@@ -1,7 +1,5 @@
 # Log Chain
 
-<img width="1439" alt="Screenshot 2024-06-25 at 20 41 31" src="https://github.com/kemichris/Log-Chain/assets/106411775/5de3534c-5a49-4706-8511-2040ea0023e1">
-
 This project harnesses blockchain technology to develop a transparent and secure user sign-in tracking system for companies. By leveraging the immutable and decentralized nature of blockchain, our solution provides a tamper-proof record of user activity, ensuring accountability and trust.
 
 
@@ -25,6 +23,7 @@ With the increasing unreliability of web2 data, this project will help company  
 - Then select Polygon zkEVM (cardona) for network
 - input your wallet address, then submit, you will receive the tokens.
 - To launch the app, click here 👉👉 https://log-book-ten.vercel.app/
+<img width="1439" alt="Screenshot 2024-06-25 at 20 41 31" src="https://github.com/kemichris/Log-Chain/assets/106411775/5de3534c-5a49-4706-8511-2040ea0023e1">
 
 ## Usage
 - To be able to test the admin function, users need the authorized account, below is the private key 🔑 (please do not send money to this account, as it is available to the public and can be stolen)
