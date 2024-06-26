@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import contractAbi from "../contract/contractABI.json";
-import { enqueueSnackbar } from "notistack";
-
+import { useSnackbar } from 'notistack';
 import { ethers } from "ethers";
 
 export const SignedInWorkers = () => {
     const contractAddress = "0x7b0629C461331ed5156fB64dD88f72cc70A355C8";
+    const { enqueueSnackbar } = useSnackbar();
     const [workers, setWorkers] = useState([]);
 
     const truncateAddress = (address)=> {
@@ -40,7 +40,29 @@ export const SignedInWorkers = () => {
 
     useEffect(() => {
         fetchSignedWorkers()
-    })
+    });
+
+    const resetUserSignIn = async ()=> {
+        try{
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = await provider.getSigner();
+            const logBookContract = new ethers.Contract(contractAddress, contractAbi, signer);
+
+            const transaction = await logBookContract.resetSignIn();
+            let receipt;
+            receipt = await transaction.wait()
+            console.log(receipt);
+
+            console.log(`Reset successful`);
+            enqueueSnackbar("Reset successful", { variant: "success" });
+
+            setWorkers([]);
+        } catch (error) {
+            console.log("Error resetting sign in:", error);
+            enqueueSnackbar("Error resetting sign in:," + error, { variant: "error" });
+        }
+    }
 
     return (
         <div className='signedInWorkers'>
@@ -66,6 +88,8 @@ export const SignedInWorkers = () => {
                     ))}
                 </tbody>
             </table>
+
+            <button className='reset' onClick={resetUserSignIn}>Reset Sign in</button>
         </div>
     )
 }

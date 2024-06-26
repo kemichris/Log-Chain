@@ -1,10 +1,7 @@
 import React from 'react'
 
 import "./styles/Admin.css"
-
-import contractAbi from "./contract/contractABI.json";
-import { useSnackbar } from 'notistack';
-import { ethers } from 'ethers';
+import { SnackbarProvider } from 'notistack';
 
 import { Navbar } from './components/Navbar'
 import { WorkersList } from './components/WorkersList'
@@ -14,35 +11,11 @@ import { RemoveWorkers } from './components/RemoveWorkers'
 import { ProfileUpdate } from './components/ProfileUpdate'
 import { GetWorkersData } from './components/GetWorkersData'
 
-import { SnackbarProvider } from 'notistack';
+
 
 export const Admin = () => {
-    const { enqueueSnackbar } = useSnackbar();
-    const contractAddress = "0x7b0629C461331ed5156fB64dD88f72cc70A355C8";
-
-    const resetUserSignIn = async ()=> {
-        try{
-            const provider = new ethers.BrowserProvider(window.ethereum);
-            await provider.send("eth_requestAccounts", []);
-            const signer = await provider.getSigner();
-            const logBookContract = new ethers.Contract(contractAddress, contractAbi, signer);
-
-            const transaction = await logBookContract.resetSignIn();
-            let receipt;
-            receipt = await transaction.wait()
-            console.log(receipt);
-
-            console.log(`Reset successful`);
-            enqueueSnackbar("Reset successful", { variant: "success" });
-        } catch (error) {
-            console.log("Error resetting sign in:", error);
-            enqueueSnackbar("Error resetting sign in:," + error, { variant: "error" });
-        }
-    }
-
     return (
         <div>
-
             <SnackbarProvider>
                 <Navbar linkPage="/" link="Sign in as worker" />
                 <div className="workersSection">
@@ -56,15 +29,8 @@ export const Admin = () => {
                 <div className="workersProfile">
                     <ProfileUpdate />
                     <GetWorkersData />
-                </div>
-
-                <button className='reset' onClick={resetUserSignIn}>Reset Sign in</button>
-            </SnackbarProvider>
-
-
-
-
-            
+                </div>       
+            </SnackbarProvider>      
         </div>
     )
 }
