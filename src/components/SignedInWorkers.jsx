@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack';
 import { ethers } from "ethers";
 
 export const SignedInWorkers = () => {
-    const contractAddress = "0x7b0629C461331ed5156fB64dD88f72cc70A355C8";
+    const contractAddress = "0x78d3516cA69Ee0cef4Fb968B96153b5f546970B4";
     const { enqueueSnackbar } = useSnackbar();
     const [workers, setWorkers] = useState([]);
 
