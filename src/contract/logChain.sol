@@ -204,10 +204,8 @@ contract logChain {
             workersList[i].signed = false;
         }
 
-        for (uint256 i = 0; i < loggedInWorkers.length; i++) {
-            delete loggedInWorkers[i];
-        }
-
+        delete loggedInWorkers;
+        
         lastResetTime = block.timestamp;
     }
 }
