@@ -7,16 +7,25 @@ This project harnesses blockchain technology to develop a transparent and secure
 
 With the increasing unreliability of web2 data, this project will help company  utilize blockchain technology to create a secure and transparent logbook that tracks user sign-ins. This innovative approach ensures the authenticity and integrity of user data, providing a tamper-proof record that fosters trust and accountability. By leveraging blockchain's decentralized and immutable nature, we can guarantee that user activity is accurately recorded and accessible, without any risk of compromise or manipulation.
 
-## What can this app do
+## App Features
 
-- Admin can add new workers to the contract
-- Admin can remove workers whose employment is terminated from the contract
-- Workers can sign in
-- Workers can sign out
-- Admin can check users data with wallet Address
-- Admin can update users details to the contract
-- List of signed in workers
-- List of workers displayed
+*Admin Capabilities*
+
+- Add new workers to the contract
+- Remove workers whose employment has been terminated from the contract
+- Update user details in the contract
+- Check user data by wallet address
+
+
+*Worker Capabilities*
+
+- Sign in
+- Sign out
+
+*Additional Features*
+
+- Display list of signed-in workers
+- Display list of all workers
 
 ## Quick Start
 To get started, make sure you have some testnet tokens on the Polygon Cardona testnet. If you don't, click  ( https://faucet.polygon.technology/ ) to receive some.
