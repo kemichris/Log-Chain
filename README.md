@@ -34,10 +34,24 @@ To get started, make sure you have some testnet tokens on the Polygon Cardona te
 <img width="1439" alt="Screenshot 2024-06-25 at 20 41 31" src="https://github.com/kemichris/Log-Chain/assets/106411775/5de3534c-5a49-4706-8511-2040ea0023e1">
 
 ## Usage
-- To be able to test the admin function, users need the authorized account, below is the private key 🔑 (please do not send money to this account, as it is available to the public and can be stolen)
-- ( 145e823b3b080401d262d80b2541d648d3a75a70892c45a9c3bb0c5ba9f45133 ) Account private key
-- With this you will be able to test the admin functions
-- To integrate and use this contract, just copy the contract file and deploy on any evm chain of your choice, then integrate with your frontend, you are ready to go
+
+*Admin Functions*
+
+To test the admin functions, use the authorized account with the private key:
+
+🔑 `145e823b3b080401d262d80b2541d648d3a75a70892c45a9c3bb0c5ba9f45133`
+
+Please note that this private key is public and should not be used to send personal money, as it can be stolen.
+
+*Integrating the Contract*
+
+To integrate and use this contract, follow these steps:
+
+- Copy the contract file
+- Deploy it on any EVM chain of your choice
+- Integrate it with your frontend
+
+
 
 
 
