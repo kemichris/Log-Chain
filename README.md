@@ -21,12 +21,16 @@ With the increasing unreliability of web2 data, this project will help company  
 ## Quick Start
 To get started, make sure you have some testnet tokens on the Polygon Cardona testnet. If you don't, click  ( https://faucet.polygon.technology/ ) to receive some.
 
-#Step 1: Select Network and Get Tokens
+*Step 1: Select Network and Get Tokens*
+
 - Select Polygon zkEVM (Cardona) as your network
 - Input your wallet address and submit to receive testnet tokens
 
-#Step 2: Launch the App
-Click click here 👉👉 https://log-book-ten.vercel.app/ to launch the app.
+
+*Step 2: Launch the App*
+
+- Click click here 👉👉 https://log-book-ten.vercel.app/ to launch the app.
+  
 <img width="1439" alt="Screenshot 2024-06-25 at 20 41 31" src="https://github.com/kemichris/Log-Chain/assets/106411775/5de3534c-5a49-4706-8511-2040ea0023e1">
 
 ## Usage
